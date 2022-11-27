@@ -1,0 +1,100 @@
+#---------------------------------------------------
+#--- APPLICATION SETTINGS
+
+        flowSolver                      = true
+        dynamicLoadBalancing            = false
+        gridGenerator                   = false
+        restartFile                     = false
+        initRestart                     = false
+        scratchSize                     = 25.0
+        noSolvers                        = 1
+        noDomains                       = 1
+
+
+#---------------------------------------------------
+#--- OUTPUT-INTERVALS
+
+        timeSteps                       = 30000
+        solutionInterval                = 6000
+        restartInterval                 = 30000
+        residualInterval                = 100
+        restartTimeStep                 = 10000
+
+
+#---------------------------------------------------
+#--- I/0
+
+        outputDir                       = "./out/"
+        geometryInputFileName           = "geometry.toml"
+        gridOutputFileName              = "grid.Netcdf"
+        gridInputFileName               = "grid.Netcdf"
+        restartFileName                 = "restart"
+        saveDerivatives                 = false
+#---------------------------------------------------
+#---- Spartial Discretization
+
+        initMethod                      = "LB_FROM_ZERO_INIT"
+#        solvertype                       = "MAIA_LATTICE_BOLTZMANN"
+        solvertype.0                       = "MAIA_LATTICE_BOLTZMANN"
+        solvertype.default                       = "MAIA_UNIFIED"
+        solverMethod                     = "MAIA_LATTICE_CUMULANT"
+
+        executionRecipe                 = "RECIPE_BASE"
+        nDim                            = 3
+        noDistributions                 = 27
+#---------------------------------------------------
+#--- TESTCASE-SETUP
+
+        Ma                              = 0.02
+        Re                              = 100
+# domainLengthLB                  = 64 
+        referenceLength                = 1
+        externalForcing                 = false
+        multiBCTreatment                = "W-I-P"
+#       rho1                            = 1 
+
+#       CouettePoiseuilleRatio          = 0.0
+#---------------------------------------------------
+#---- REFINEMENT + MEMORY
+# interpolationDistMethod = "perpOp"
+        interpolationDistMethod = "STD"
+        maxNoCells                      = 7750000
+        partitionCellOffspringThreshold = 600000
+        minLevel                        = 6
+        maxUniformRefinementLevel       = 9
+        maxRfnmntLvl                    = 9
+        maxBoundaryRfnLvl               = 9
+
+        noHaloLayers                    = 2
+
+ periodicCartesianDir            =[0, 0, 1]
+
+        reductionFactor                 = 1.0
+
+
+#bndNormalVectors = [0.999914, 0.013089, -0.0,
+     #0.999914, 0.013089, -0.0,
+     #0.0, 0.0, -1.0,
+     #0.0, 0.0, 1.0]
+
+#       initVelocityMethod              = "fromSTL"
+
+       #bndNormalMethod                 = "read"
+
+#enable postprocessing
+ postProcessing = true
+ noPostProcessing = 1
+ postProcessingSolverIds = [0]
+ postProcessingType_0 = "POSTPROCESSING_LB"
+ #pp_probePath = "./out/"
+
+ #average during solver run, probe lines/slices after solver run
+ postProcessingOps_0 = ["MAIAPP_PROBE_LINE_IN"]
+
+ pp_averageStartTimestep = 29900
+ pp_averageStopTimestep = 30000
+ pp_averageInterval = 100
+
+ #define probe lines
+ pp_probeLineDirection = [0, 0, 0, 0, 1, 1, 1, 1]
+ pp_probeLineCoordinates = [0.0, 0.0, 1.2, 0.0, 0.0, 0.08, 1.2, 0.08, 0.0, 0.0, 1.2, 0.0, 0.0, 0.08, 1.2, 0.08]

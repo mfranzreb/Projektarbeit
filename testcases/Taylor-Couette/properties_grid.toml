@@ -1,0 +1,45 @@
+#---------------------------------------------------
+#--- APPLICATION SETTINGS
+
+        flowSolver                      = false 
+        dynamicLoadBalancing            = false
+        gridGenerator                   = true
+        restartFile                     = false
+        initRestart                     = false
+        scratchSize                     = 20.0
+        noSolvers                        = 1
+        noDomains                       = 1
+
+#---------------------------------------------------
+#--- I/0
+
+        outputDir                       = "./out/" 
+        geometryInputFileName           = "geometry.toml"
+        gridOutputFileName              = "grid.Netcdf"
+        gridInputFileName               = "grid.Netcdf"
+
+#---------------------------------------------------
+#---- Spartial Discretization
+
+        initMethod                      = "LB_FROM_ZERO_INIT"
+        solvertype                       = "MAIA_LATTICE_BOLTZMANN"
+        solverMethod                     = "MAIA_LATTICE_CUMULANT"
+        spaceDimensions                 = 3
+
+#---------------------------------------------------
+#---- REFINEMENT + MEMORY
+
+        maxNoCells                      = 75000000
+        partitionCellOffspringThreshold = 60000
+        minLevel                        = 6
+        maxUniformRefinementLevel       = 9
+        maxRfnmntLvl                    = 9
+        maxBoundaryRfnLvl               = 9
+        noHaloLayers                    = 2
+        reductionFactor                 = 1.0
+
+# Boundary refinement only property
+       smoothDistance = 5                                     # Cell distance per level the grid has to be smoothed.
+       localMinBoundaryThreshold = 15                      # On the last level (in this case level 6), a distance of 2 cells of size maxUniformRefinementLevel (in this case 5) will be refined.
+       localRfnBoundaryIds = 1
+       localRfnMethod = 2                            # Which boundary id to perform the boundary refinement on (Specified in the geometry.toml).

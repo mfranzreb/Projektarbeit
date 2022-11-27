@@ -1,0 +1,18 @@
+#include all testcases or only specific testcases
+[general]
+all_testcases = true
+testcases = []
+
+#select parameters to compare to solution (false or true as default?)
+[parameters]
+parameters = ["velocity", "density", "pressure", "temperature"]
+velocity = true
+density = true
+pressure = true
+temperature = true
+
+#exclude analytical or experimental solutions
+[solutionType]
+solutionType = ["analytical", "experimental"]
+analytical = true
+experimental = true

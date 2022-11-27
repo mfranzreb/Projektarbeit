@@ -1,0 +1,22 @@
+noSegments = 4
+# inOutSegmentsIds = [0, 1]
+  periodicSegmentsIds =[2, 3]
+
+ #   filename = ""
+    filename.0 = "stl/inner_cylinder.stl"
+    filename.1 = "stl/outer_cylinder.stl"
+    filename.2 = "stl/top.stl"
+    filename.3 = "stl/bottom.stl"
+
+   "body_segments.inner"= 0
+   "body_segments.outer"= 1
+   "body_segments.top" = 2
+   "body_segments.bottom"=3
+
+  #  BC = 0
+
+    BC.0 = 2000
+    BC.1 = 2050
+    BC.2 = 0
+    BC.3 = 0
+
